@@ -29,12 +29,20 @@
 ## Connect the trigger box and the Actor to be spawned to the Spawner
 
 ### Inside Spawner C++, create an instance of the actor to be spawned using TSubclassOf<type> and exposing it to Unreal with UPROPERTY
-### In Unreal select the Spawner object and select the BP of the actor to be spawner in the UPROPERTY dropdown you just created
+#### In Unreal select the Spawner object and select the BP of the actor to be spawner in the UPROPERTY dropdown you just created
 
 ### Inside Spawner C++, Create a TriggerBox instance variable. Expose it to Unreal with UPROPERTY. In Unreal, in the Spawner component, select your trigger box component in the dropdown for this UPROPERTY field
 #### In the Spawner BP component details select your trigger box component as the UPROPERTY field you just created
-#### Inside Spawner C++, Create a TriggerAction function 
+  
+#### Inside Spawner C++, Create a TriggerAction function OnBeginPlay
 ##### Inside the TriggerAction function use the TriggerBox variable to call OnActorBeginOverlap and OnActorEndOverlap functions and pass your custom functions that each of these will call
 
-## Define your custom functions for BeginOverlap and EndOverlap
+### Define your custom functions for BeginOverlap and EndOverlap
+  #### Create your custom functions passing OverlappedActor and OtherActor as params and expose it with UFUNCTION()
+  
+## Spawn actor with a timer
+  ### Inside Spawner C++, create the SpawnActor function
+    #### Spawn
+  ### Inside Spawner C++, OnBeginPlay get Location and Rotation for this component
+  ### Inside Spawner C++, OnBeginPlay set timer
 
