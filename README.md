@@ -2,36 +2,36 @@
 
 # Ingridients
 
-## Add a new Blueprint class for the actor to be Spawned
-
+## Actor to be Spawned
+### Add NEW Blueprint class of Actor type for the actor to be Spawned
 ### Add a mesh to it
 
-## Spawner Actor
-
-### Add a C++ AActor class
-
+## Spawner
+### Add NEW C++ AActor class
 ### Create a BP based on this C++ class
-
 ### Drag the BP component into the world
 
 ## Trigger Box
-
 ### Add a new C++ Trigger Box class
-
 ### Drag the trigger box C++ component into the world
-
+### in Details:
 #### Uncheck "actor hidden in game" so that the trigger box is visible
-#### Add a static mesh component to the trigger box component - select a mesh and a material for it
+#### Click on the collision component and Add a static mesh component to it > select a mesh and a material for it so that the trigger box is vizible in the game
 #### Select the collision of the mesh as "NoCollision".
+
+## Trigger Volume
+### In Details for this trigger volume 
+#### brush settings > click on create static mesh > then select a material for this mesh so that the trigger volume is vizible during game
 
 # Preparation
 
-## Connect the trigger box and the Actor to be spawned to the Spawner
+## Connect the trigger box / Volume and the Actor to be spawned to the Spawner
 
-### Inside Spawner C++, create an instance of the actor to be spawned using TSubclassOf<type> and exposing it to Unreal with UPROPERTY
+### Inside Spawner C++
+#### create an instance of the actor to be spawned using TSubclassOf<type> and exposing it to Unreal with UPROPERTY
 #### In Unreal select the Spawner object and select the BP of the actor to be spawner in the UPROPERTY dropdown you just created
-
-### Inside Spawner C++, Create a TriggerBox instance variable. Expose it to Unreal with UPROPERTY. In Unreal, in the Spawner component, select your trigger box component in the dropdown for this UPROPERTY field
+#### Create a TriggerBox / Volume instance variable. Expose it to Unreal with UPROPERTY. 
+#### In Unreal, in the Spawner component, select your trigger box component in the dropdown for this UPROPERTY field
 #### In the Spawner BP component details select your trigger box component as the UPROPERTY field you just created
   
 #### Inside Spawner C++, Create a TriggerAction function OnBeginPlay
