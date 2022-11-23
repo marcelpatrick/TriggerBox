@@ -20,8 +20,9 @@
 #### Select the collision of the mesh as "NoCollision".
 
 ## Trigger Volume
-### In Details for this trigger volume 
-#### brush settings > click on create static mesh > then select a material for this mesh so that the trigger volume is vizible during game
+### Add a new C++ Trigger Volume class
+### Drag the trigger Volume C++ component into the world
+### Drag a cube component to overlap on the trigger volume so that it is visible. set cube collision as no collision.
 
 # Preparation
 
@@ -32,17 +33,18 @@
 #### In Unreal select the Spawner object and select the BP of the actor to be spawner in the UPROPERTY dropdown you just created
 #### Create a TriggerBox / Volume instance variable. Expose it to Unreal with UPROPERTY. 
 #### In Unreal, in the Spawner component, select your trigger box component in the dropdown for this UPROPERTY field
-#### In the Spawner BP component details select your trigger box component as the UPROPERTY field you just created
+#### In the Spawner BP component details select your trigger box component and actor to be spawned as the UPROPERTY field you just created
   
-#### Inside Spawner C++, Create a TriggerAction function OnBeginPlay
+#### Create a TriggerAction function. call it on OnBeginPlay
 ##### Inside the TriggerAction function use the TriggerBox variable to call OnActorBeginOverlap and OnActorEndOverlap functions and pass your custom functions that each of these will call
 
 ### Define your custom functions for BeginOverlap and EndOverlap
-  #### Create your custom functions passing OverlappedActor and OtherActor as params and expose it with UFUNCTION()
+#### Create your custom functions passing OverlappedActor and OtherActor as params and expose it with UFUNCTION()
   
 ## Spawn actor with a timer
-  ### Inside Spawner C++, create the SpawnActor function
-    #### Spawn
-  ### Inside Spawner C++, OnBeginPlay get Location and Rotation for this component
-  ### Inside Spawner C++, OnBeginPlay set timer
+
+### Inside Spawner C++,
+#### create the SpawnActor function
+#### OnBeginPlay get Location and Rotation for this component
+#### OnBeginPlay set timer
 
