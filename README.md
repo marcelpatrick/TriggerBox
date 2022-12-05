@@ -45,6 +45,8 @@
 
 ### Inside Spawner C++,
 #### create the SpawnActor function
-#### OnBeginPlay get Location and Rotation for this component
+#### OnBeginPlay get Location and Rotation for this Spawner
+#### On the header file create a FTimerHandle variable
 #### OnBeginPlay set timer
+  ##### Use GetWorldTimeManager() function to call SetTimer() passing the TimerHandle variable, the object, the address for the call back function to the actor, the time range and loop boolean. 
 
