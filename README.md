@@ -6,17 +6,17 @@
    - Add a mesh to it
 
 ## 2- Spawner
-  ### Add NEW C++ AActor class
-  ### Create a BP based on this C++ class
-  ### Drag the BP component into the world
+   - Add NEW C++ AActor class
+   - Create a BP based on this C++ class
+   - Drag the BP component into the world
 
 ## 3- Trigger Box
-  ### Add a new C++ Trigger Box class
-  ### Drag the trigger box C++ component into the world
-  ### in Details:
-    #### Uncheck "actor hidden in game" so that the trigger box is visible
-    #### Click on the collision component and Add a static mesh component to it > select a mesh and a material for it so that the trigger box is vizible in the game
-    #### Select the collision of the mesh as "NoCollision".
+   - Add a new C++ Trigger Box class
+   - Drag the trigger box C++ component into the world
+   - in Details:
+     - Uncheck "actor hidden in game" so that the trigger box is visible
+     - Click on the collision component and Add a static mesh component to it > select a mesh and a material for it so that the trigger box is vizible in the game
+     - Select the collision of the mesh as "NoCollision".
 
 ## 4- Trigger Volume
   ### Add a new C++ Trigger Volume class
