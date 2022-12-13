@@ -1,10 +1,9 @@
 # TriggerBox
 
 # Ingridients
-
-## 1- Actor to be Spawned
-  ### - Add NEW Blueprint class of Actor type for the actor to be Spawned
-  ### - Add a mesh to it
+1. Actor to be Spawned
+   - Add NEW Blueprint class of Actor type for the actor to be Spawned
+   - Add a mesh to it
 
 ## 2- Spawner
   ### Add NEW C++ AActor class
