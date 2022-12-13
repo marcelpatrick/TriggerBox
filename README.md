@@ -2,16 +2,16 @@
 
 # Ingridients
 
-##1- Actor to be Spawned
+## 1- Actor to be Spawned
   ### Add NEW Blueprint class of Actor type for the actor to be Spawned
   ### Add a mesh to it
 
-##2- Spawner
+## 2- Spawner
   ### Add NEW C++ AActor class
   ### Create a BP based on this C++ class
   ### Drag the BP component into the world
 
-##3- Trigger Box
+## 3- Trigger Box
   ### Add a new C++ Trigger Box class
   ### Drag the trigger box C++ component into the world
   ### in Details:
@@ -19,14 +19,14 @@
     #### Click on the collision component and Add a static mesh component to it > select a mesh and a material for it so that the trigger box is vizible in the game
     #### Select the collision of the mesh as "NoCollision".
 
-##4- Trigger Volume
+## 4- Trigger Volume
   ### Add a new C++ Trigger Volume class
   ### Drag the trigger Volume C++ component into the world
   ### Drag a cube component to overlap on the trigger volume so that it is visible. set cube collision as no collision.
 
 # Preparation
 
-##1- Connect the trigger box / Volume and the Actor to be spawned to the Spawner
+## 1- Connect the trigger box / Volume and the Actor to be spawned to the Spawner
   ### Inside Spawner C++
     #### create an instance of the actor to be spawned using TSubclassOf<type> and exposing it to Unreal with UPROPERTY
     #### In Unreal select the Spawner object and select the BP of the actor to be spawner in the UPROPERTY dropdown you just created
@@ -39,7 +39,7 @@
   ### Define your custom functions for BeginOverlap and EndOverlap
     #### Create your custom functions passing OverlappedActor and OtherActor as params and expose it with UFUNCTION()
   
-##2- Spawn actor with a timer
+## 2- Spawn actor with a timer
   ### Inside Spawner C++,
     #### create the SpawnActor function
     #### OnBeginPlay get Location and Rotation for this Spawner
