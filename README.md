@@ -19,30 +19,30 @@
      - Select the collision of the mesh as "NoCollision".
 
 ## 4- Trigger Volume
-  ### Add a new C++ Trigger Volume class
-  ### Drag the trigger Volume C++ component into the world
-  ### Drag a cube component to overlap on the trigger volume so that it is visible. set cube collision as no collision.
+   - Add a new C++ Trigger Volume class
+   - Drag the trigger Volume C++ component into the world
+   - Drag a cube component to overlap on the trigger volume so that it is visible. set cube collision as no collision.
 
 # Preparation
 
 ## 1- Connect the trigger box / Volume and the Actor to be spawned to the Spawner
-  ### Inside Spawner C++
-    #### create an instance of the actor to be spawned using TSubclassOf<type> and exposing it to Unreal with UPROPERTY
-    #### In Unreal select the Spawner object and select the BP of the actor to be spawner in the UPROPERTY dropdown you just created
-    #### Create a TriggerBox / Volume instance variable. Expose it to Unreal with UPROPERTY. 
-    #### In the Spawner BP component details select your trigger box component as the UPROPERTY field you just created
-    #### OR, In Unreal, select the Spawner component and go to the Details tab, select your trigger box / trigger volume component in the dropdown 
-    #### Create a TriggerAction function. call it on OnBeginPlay
-      ##### Inside the TriggerAction function use the TriggerBox variable to call OnActorBeginOverlap and OnActorEndOverlap functions and pass your custom functions that each of these will call
+   - Inside Spawner C++
+     - create an instance of the actor to be spawned using TSubclassOf<type> and exposing it to Unreal with UPROPERTY
+     - In Unreal select the Spawner object and select the BP of the actor to be spawner in the UPROPERTY dropdown you just created
+     - Create a TriggerBox / Volume instance variable. Expose it to Unreal with UPROPERTY. 
+     - In the Spawner BP component details select your trigger box component as the UPROPERTY field you just created
+     - OR, In Unreal, select the Spawner component and go to the Details tab, select your trigger box / trigger volume component in the dropdown 
+     - Create a TriggerAction function. call it on OnBeginPlay
+       - Inside the TriggerAction function use the TriggerBox variable to call OnActorBeginOverlap and OnActorEndOverlap functions and pass your custom functions that each of these will call
 
-  ### Define your custom functions for BeginOverlap and EndOverlap
-    #### Create your custom functions passing OverlappedActor and OtherActor as params and expose it with UFUNCTION()
+   - Define your custom functions for BeginOverlap and EndOverlap
+     - Create your custom functions passing OverlappedActor and OtherActor as params and expose it with UFUNCTION()
   
 ## 2- Spawn actor with a timer
-  ### Inside Spawner C++,
-    #### create the SpawnActor function
-    #### OnBeginPlay get Location and Rotation for this Spawner
-    #### On the header file create a FTimerHandle variable
-    #### OnBeginPlay set timer
-      ##### Use GetWorldTimeManager() function to call SetTimer() passing the TimerHandle variable, the object, the address for the call back function to the actor, the time range and loop boolean. 
+   - Inside Spawner C++,
+     - create the SpawnActor function
+     - OnBeginPlay get Location and Rotation for this Spawner
+     - On the header file create a FTimerHandle variable
+     - OnBeginPlay set timer
+       - Use GetWorldTimeManager() function to call SetTimer() passing the TimerHandle variable, the object, the address for the call back function to the actor, the time range and loop boolean. 
 
