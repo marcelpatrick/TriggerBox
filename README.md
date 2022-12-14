@@ -10,7 +10,7 @@
    - Create a BP based on this C++ class
    - Drag the BP component into the world to the place where you want it to spawn the actor
 
-## 3- Trigger Box
+## 3A- Trigger Box
    - Add a new C++ Trigger Box class
    - Drag the trigger box C++ component into the world
    - in Details:
@@ -18,7 +18,7 @@
      - Click on the collision component and Add a static mesh component to it > select a mesh and a material for it so that the trigger box is vizible in the game
      - Select the collision of the mesh as "NoCollision".
 
-## 4- Trigger Volume
+## 3B- Trigger Volume
    - Add a new C++ Trigger Volume class
    - Drag the trigger Volume C++ component into the world
    - Drag a cube component to overlap on the trigger volume so that it is visible. set cube collision as no collision.
