@@ -28,7 +28,7 @@
 ## 1- Connect the trigger box / Volume and the Actor to be spawned to the Spawner
    - Inside Spawner C++
      - create an instance of the actor to be spawned using TSubclassOf<type> and exposing it to Unreal with UPROPERTY
-     - In Unreal select the Spawner object and select the BP of the actor to be spawner in the UPROPERTY dropdown you just created
+     - In Unreal open the Spawner BP and select the BP of the actor to be spawned in the UPROPERTY dropdown you just exposed
      - Create a TriggerBox / Volume instance variable. Expose it to Unreal with UPROPERTY. 
      - In the Spawner BP component details select your trigger box component as the UPROPERTY field you just created
      - OR, In Unreal, select the Spawner component and go to the Details tab, select your trigger box / trigger volume component in the dropdown 
