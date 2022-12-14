@@ -49,3 +49,5 @@
      - OnBeginPlay set timer
        - Use GetWorldTimeManager() function to call SetTimer() passing the TimerHandle variable, the object, the address for the call back function to the actor, the time range and loop boolean. 
 
+![image](https://user-images.githubusercontent.com/12215115/207589987-438ab4e1-a2ff-4cf9-820b-10647ad6860b.png)
+
