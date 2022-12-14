@@ -8,7 +8,7 @@
 ## 2- Spawner
    - Add NEW C++ AActor class
    - Create a BP based on this C++ class
-   - Drag the BP component into the world
+   - Drag the BP component into the world to the place where you want it to spawn the actor
 
 ## 3- Trigger Box
    - Add a new C++ Trigger Box class
