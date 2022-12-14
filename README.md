@@ -33,7 +33,7 @@
    - OR, In Unreal, select the Spawner component and go to the Details tab, select your trigger box / trigger volume component in the dropdown 
    
    - Custom overlap functions
-     - In Spawner C++ Declare your custom overlap functions passing OverlappedActor and OtherActor as params and expose it with UFUNCTION()
+     - In Spawner C++ Declare your custom overlap functions passing instances of the AActor class OverlappedActor and OtherActor pointers as params and expose it with UFUNCTION()
      - Define your custom functions for BeginOverlap and EndOverlap
    
    - TriggerAction function
