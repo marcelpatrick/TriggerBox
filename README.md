@@ -30,11 +30,10 @@
      - create an instance of the actor to be spawned using TSubclassOf<type> and exposing it to Unreal with UPROPERTY
      - In Unreal open the Spawner BP and select the BP of the actor to be spawned in the UPROPERTY dropdown you just exposed
      - #include "Engine/TriggerBox.h" in the header file
-     - Create a TriggerBox / Volume instance variable. Expose it to Unreal with UPROPERTY. 
+     - Create a TriggerBox / Volume instance pointer variable. Expose it to Unreal with UPROPERTY. 
      - In the Spawner BP component details select your trigger box component as the UPROPERTY field you just created
      - OR, In Unreal, select the Spawner component and go to the Details tab, select your trigger box / trigger volume component in the dropdown 
      - Create a TriggerAction function. call it on OnBeginPlay
-       - #include "Engine/TriggerBox.h" in .cpp file
        - Inside the TriggerAction function use the TriggerBox variable to call OnActorBeginOverlap and OnActorEndOverlap functions and pass your custom functions that each of these will call
 
    - Define your custom functions for BeginOverlap and EndOverlap
