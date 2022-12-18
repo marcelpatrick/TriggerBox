@@ -40,6 +40,11 @@
      - Declare a TriggerAction function.
      - Define the TriggerAction funciton. Inside the TriggerAction function use the TriggerBox variable to call OnActorBeginOverlap and OnActorEndOverlap functions and pass your custom functions that each of these will call
      - Call the TriggerAction function on BeginPlay
+     
+## 2- Spawn actor
+   - On Begin Play get actor location and rotation
+   - Create a SpawnActor function passing in location and rotation parameters
+   - Use GetWorld() to call SpawnActor function of AActor type passing in the actor to be spawned, the location and rotation where to spawn this actor.
 
 ## 2- Spawn actor with a timer
    - Inside Spawner C++,
