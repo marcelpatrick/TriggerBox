@@ -4,6 +4,7 @@
 ## 1. Actor to be Spawned
    - Add NEW Blueprint class of Actor type for the actor to be Spawned
    - Add a mesh to it
+   - on details turn simulate physics on 
 
 ## 2- Spawner
    - Add NEW C++ AActor class
@@ -43,16 +44,20 @@
      
 ## 2- Spawn actor
    - On Begin Play get actor location and rotation
-   - Create a SpawnActor function passing in location and rotation parameters
-   - Use GetWorld() to call SpawnActor function of AActor type passing in the actor to be spawned, the location and rotation where to spawn this actor.
+   - Create a custom MySpawnActor function
+   - Inside MySpawnActor Use GetWorld() to call SpawnActor function of AActor type passing in the actor to be spawned, the location and rotation where to spawn this actor.
+   - Call MySpawnActor from inside the custom MyOnBeginOverlap function 
+   
+## 3- Spawn actor continuously with a timer
+   - On the Spawner header file create a FTimerHandle variable
+   - On Spawner.cpp, OnBeginPlay, set timer and make it call SpawnActor()
+     - Use GetWorldTimeManager() function to call SetTimer() passing the TimerHandle variable, "this" as the object, the address for the call back function to spawn the actor, the time range for timer count and loop boolean.
+   - Remove the call for MySpawnActor from inside MyOnBeginOverlap()
+   - Declare a IsOverlapping bool for when the actor is overlapping the TriggerBox / TriggerVolume
+   - Set IsOverlapping as true inside MyOnBeginOverlap() and false inside MyOnEndOverlap()
+   - Inside MySpawnActor, wrap the SpawnActor function with an if statement based on the IsOverlapping bool so that it only gets called if the actor is currently overlapping the TriggerBox / TriggerVolume
 
-## 2- Spawn actor with a timer
-   - Inside Spawner C++,
-     - create the SpawnActor function
-     - OnBeginPlay get Location and Rotation for this Spawner
-     - On the header file create a FTimerHandle variable
-     - OnBeginPlay set timer
-       - Use GetWorldTimeManager() function to call SetTimer() passing the TimerHandle variable, the object, the address for the call back function to the actor, the time range and loop boolean. 
+## Components connection flow
+   ![image](https://user-images.githubusercontent.com/12215115/208297695-9d252f30-4611-4348-b784-0f3feee17bf9.png)
 
-![image](https://user-images.githubusercontent.com/12215115/207589987-438ab4e1-a2ff-4cf9-820b-10647ad6860b.png)
 
