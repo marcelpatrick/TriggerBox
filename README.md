@@ -38,10 +38,10 @@
      - Define your custom functions for BeginOverlap and EndOverlap
    
 ```
-       - UFUNCTION:
-         - Just like with UPROPERTY, which exposes variables to a Blueprint, UFUNCTION allows a Blueprint to call a Callback function from your C++ code. 
-         - Use UFUNCTION to allow the Callback function - MyOnBeginOverlap - to bind to the Multicast Delegate - OnActorBeginOverlap.
-         - The MulticastDelegate OnActorBeginOverlap will listen to the overlap event on the TriggerBox component in the world and will broadcast the data of this event to the Callback function MyOnBeginOverlap.
+ - UFUNCTION:
+   - Just like with UPROPERTY, which exposes variables to a Blueprint, UFUNCTION allows a Blueprint to call a Callback function from your C++ code. 
+   - Use UFUNCTION to allow the Callback function - MyOnBeginOverlap - to bind to the Multicast Delegate - OnActorBeginOverlap.
+   - The MulticastDelegate OnActorBeginOverlap will listen to the overlap event on the TriggerBox component in the world and will broadcast the data of this event to the Callback function MyOnBeginOverlap.
 ```
    
    - TriggerAction function
