@@ -34,12 +34,16 @@
    - OR, In Unreal, select the Spawner component and go to the Details tab, select your trigger box / trigger volume component in the dropdown 
    
    - Custom overlap functions
-     - In Spawner C++ Declare your custom overlap functions passing instances of the AActor class OverlappedActor and OtherActor pointers as params and expose it with UFUNCTION()
+     - In Spawner C++ Declare your custom Callback overlap functions passing instances of the AActor class OverlappedActor and OtherActor pointers as params and expose it with UFUNCTION()
      - Define your custom functions for BeginOverlap and EndOverlap
+       - UFUNCTION:
+         - Just like with UPROPERTY, which exposes variables to a Blueprint, UFUNCTION allows a Blueprint to call a Callback function from your C++ code. 
+         - Use UFUNCTION to allow the Callback function - MyOnBeginOverlap - to bind to the Multicast Delegate - OnActorBeginOverlap.
+         - The MulticastDelegate OnActorBeginOverlap will listen to the overlap event on the TriggerBox component in the world and will broadcast the data of this event to the Callback function MyOnBeginOverlap.
    
    - TriggerAction function
      - Declare a TriggerAction function.
-     - Define the TriggerAction funciton. Inside the TriggerAction function use the TriggerBox variable to call OnActorBeginOverlap and OnActorEndOverlap functions and pass your custom functions that each of these will call
+     - Define the TriggerAction funciton. Inside the TriggerAction function use the TriggerBox variable to call the Multicast Delegate functions OnActorBeginOverlap and OnActorEndOverlap functions and pass your custom Callback functions that each of these will call
      - Call the TriggerAction function on BeginPlay
      
 ## 2- Spawn actor
