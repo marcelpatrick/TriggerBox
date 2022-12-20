@@ -40,8 +40,8 @@
 ```
  - UFUNCTION:
    - Just like with UPROPERTY, which exposes variables to a Blueprint, UFUNCTION allows a Blueprint to call a Callback function from your C++ code. 
-   - Use UFUNCTION to allow the Callback function - MyOnBeginOverlap - to bind to the Multicast Delegate - OnActorBeginOverlap.
-   - The MulticastDelegate OnActorBeginOverlap will listen to the overlap event on the TriggerBox component in the world and will broadcast the data of this event to the Callback function MyOnBeginOverlap.
+   - Use UFUNCTION to allow the Callback function - MyOnBeginOverlap - to bind to the Delegate - OnActorBeginOverlap.
+   - The Delegate OnActorBeginOverlap will listen to the overlap event on the TriggerBox component in the world and will broadcast the data of this event to the Callback function MyOnBeginOverlap so that it can perform a custom action when this event occurs.
 ```
    
    - TriggerAction function
