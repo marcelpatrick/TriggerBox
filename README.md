@@ -28,6 +28,13 @@
 
 ## 1- Connect the trigger box / Volume and the Actor to be spawned to the Spawner
    - Inside Spawner C++, create an instance of the actor to be spawned using TSubclassOf<type> and exposing it to Unreal with UPROPERTY
+```
+- TSubclassOf:
+   - TSubclassOf creates a variable that is an instance of a class of the specific type defined inside <>
+   - The difference between TSubclassOf<AActor> MyActor and AActor MyActor is that the former is a reference to a class from which I can create new objects of the same type and the later is a reference to an object itself.
+   - We can only reference objects that are already created in the world at gameplay. To spawn new objects that are not yet created we need to reference a class of that object type. So that when we spawn we create a new object derived from that class object.
+   - We use TSubclassOf<ClassType> instead of UClass* because TSubclassOf allows us to pass into it only objects of that specific type - the dropdown in the blueprint will only show objects of that type - representing a safety measure to avoid errors of assigning to it objects that do not belong to the type of actor we want to spawn. Whereas UClass* allows to assign any type of object.
+```
    - In Unreal open the Spawner BP and select the BP of the actor to be spawned in the UPROPERTY dropdown you just exposed
    - in Spawner C++, #include "Engine/TriggerBox.h" in the header file, Create a TriggerBox / Volume instance pointer variable. Expose it to Unreal with UPROPERTY. 
    - In the Spawner BP component details select your trigger box component as the UPROPERTY field you just created
