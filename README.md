@@ -58,15 +58,16 @@
      
 ## 2- Spawn actor
    - On Begin Play get actor location and rotation
-   - Create a custom MySpawnActor function
-   - Inside MySpawnActor Use GetWorld() to call SpawnActor function of AActor type passing in the actor to be spawned, the location and rotation where to spawn this actor.
-   - Call MySpawnActor from inside the custom MyOnBeginOverlap function 
+   - Inside MyOnBeginOverlap Use GetWorld() to call SpawnActor function of AActor type passing in the actor to be spawned, the location and rotation where to spawn this actor.
    
 ## 3- Spawn actor continuously with a timer
+   - Create a custom MySpawnActor() function
+   - Remove the SpawnActor() function from inside MyOnBeginOverlap() and include it inside MySpawnActor() function
+   
    - On the Spawner header file create a FTimerHandle variable
-   - On Spawner.cpp, OnBeginPlay, set timer and make it call SpawnActor()
-     - Use GetWorldTimeManager() function to call SetTimer() passing the TimerHandle variable, "this" as the object, the address for the call back function to spawn the actor, the time range for timer count and loop boolean.
-   - Remove the call for MySpawnActor from inside MyOnBeginOverlap()
+   - On Spawner.cpp, OnBeginPlay, set timer and make it call MySpawnActor()
+     - Use GetWorldTimeManager() function to call SetTimer() passing the TimerHandle variable, "this" as the object, the address for the call back function to spawn the actor -MySpawnActor()-, the time range for timer count and loop boolean.
+   
    - Declare a IsOverlapping bool for when the actor is overlapping the TriggerBox / TriggerVolume
    - Set IsOverlapping as true inside MyOnBeginOverlap() and false inside MyOnEndOverlap()
    - Inside MySpawnActor, wrap the SpawnActor function with an if statement based on the IsOverlapping bool so that it only gets called if the actor is currently overlapping the TriggerBox / TriggerVolume
