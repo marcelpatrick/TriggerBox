@@ -41,28 +41,44 @@
    - OR, In Unreal, select the Spawner component and go to the Details tab, select your trigger box / trigger volume component in the dropdown 
    
    - Custom overlap functions
-     - In Spawner C++ Declare your custom Callback overlap functions passing instances of the AActor class OverlappedActor and OtherActor pointers as params and expose it with UFUNCTION()
-     - Define your custom functions for BeginOverlap and EndOverlap
-   
+     - In Spawner C++ header file Declare your custom Callback function MySpawnActor() passing instances of the AActor class OverlappedActor and OtherActor pointers as params and expose it with UFUNCTION()
+     
 ```
  - UFUNCTION:
-   - Just like with UPROPERTY, which exposes variables to a Blueprint, UFUNCTION allows a Blueprint to call a Callback function from your C++ code. 
+   - Just like with UPROPERTY, which exposes variables to a Blueprint, UFUNCTION allows Callback functions in your C++ code to be called by a Blueprint event. 
    - Use UFUNCTION to allow the Callback function - MyOnBeginOverlap - to bind to the Delegate - OnActorBeginOverlap.
    - The Delegate OnActorBeginOverlap will listen to the overlap event on the TriggerBox component in the world and will broadcast the data of this event to the Callback function MyOnBeginOverlap so that it can perform a custom action when this event occurs.
 ```
+   
+     - Define the MySpawnActor() custom function. Inside it, use the TriggerBox variable to call the Delegate function OnActorBeginOverlap with AddDynamic and pass the address of your custom Callback MySpawnActor() function for it to call
+
+```
+- Delegates:
+   - Delegates are methods that call other methods (Callback functions) when an event occurs.
+   - For this to happen the Callback function address needs to be passed in the Delegate parameters and its return type needs to match that of its Delegate.
+   - The Callback function bound to it will listen to the event broadcasted by the Delegate and perform its action.
+```
+
+```
+- AddDynamic:
+   - A Dynamic Delegate is a type of Delegate that can call Callback functions through events triggered from a Blueprint in the world.
+   - We use .AddDynamic() to bind a Dynamic Delegate to a Callback function.
+   - Callback functions that respond to a Dynamic Delegate broadcast must be exposed to the Blueprint through UFUNCTION().
+```
+     
+## 2- Spawn actor
+   - On Begin Play get actor location and rotation
+   - Inside MySpawnActor() Use GetWorld() to call SpawnActor function of AActor type passing in the actor to be spawned, the location and rotation where to spawn this actor.
+   
+## 3- Spawn actor continuously with a timer
+
    
    - TriggerAction function
      - Declare a TriggerAction function.
      - Define the TriggerAction funciton. Inside the TriggerAction function use the TriggerBox variable to call the Multicast Delegate functions OnActorBeginOverlap and OnActorEndOverlap functions and pass your custom Callback functions that each of these will call
      - Call the TriggerAction function on BeginPlay
      
-## 2- Spawn actor
-   - On Begin Play get actor location and rotation
-   - Inside MyOnBeginOverlap Use GetWorld() to call SpawnActor function of AActor type passing in the actor to be spawned, the location and rotation where to spawn this actor.
-   
-## 3- Spawn actor continuously with a timer
-   - Create a custom MySpawnActor() function
-   - Remove the SpawnActor() function from inside MyOnBeginOverlap() and include it inside MySpawnActor() function
+   - Remove the MySpawnActor() function from inside MyOnBeginOverlap() and include it inside MySpawnActor() function
    
    - On the Spawner header file create a FTimerHandle variable
    - On Spawner.cpp, OnBeginPlay, set timer and make it call MySpawnActor()
