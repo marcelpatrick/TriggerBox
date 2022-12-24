@@ -48,10 +48,12 @@
    - Just like with UPROPERTY, which exposes variables to a Blueprint, UFUNCTION allows Callback functions in your C++ code to be called by a Blueprint event. 
    - Use UFUNCTION to allow the Callback function - MyOnBeginOverlap - to bind to the Delegate - OnActorBeginOverlap.
    - The Delegate OnActorBeginOverlap will listen to the overlap event on the TriggerBox component in the world and will broadcast the data of this event to the Callback function MyOnBeginOverlap so that it can perform a custom action when this event occurs.
+   
 ```
    
      - Define the MySpawnActor() custom function. Inside it, use the TriggerBox variable to call the Delegate function OnActorBeginOverlap with AddDynamic and pass the address of your custom Callback MySpawnActor() function for it to call
 
+   
 ```
 - Delegates:
    - Delegates are methods that call other methods (Callback functions) when an event occurs.
