@@ -74,21 +74,26 @@
    
 ## 3- Spawn actor continuously with a timer
 
+   - Boolean functions
+     - Declare a bool var Trigger and initialize it = false.
+     - Declare a MyOnBeginOverlap() and MyOnEndOverlap() functions passing an overlapping actor and other actor as params of AActor* type
+     - Expose it with UFUNCTION()
+     - Inside MyOnBeginOverlap() set Trigger = true and inside MyOnEndOverlap() set Trigger = false
    
    - TriggerAction function
      - Declare a TriggerAction function.
-     - Define the TriggerAction funciton. Inside the TriggerAction function use the TriggerBox variable to call the Multicast Delegate functions OnActorBeginOverlap and OnActorEndOverlap functions and pass your custom Callback functions that each of these will call
-     - Call the TriggerAction function on BeginPlay
+     - Move the OnActorBeginOverlap function from BeginPlay to inside the TriggerAction() function and pall MyOnBeginOverlap() as its callback function
+     - Inside the TriggerAction function use the TriggerBox variable to call the Multicast Delegate function OnActorEndOverlap() and pass MyOnEndOverlap() as its callback function.
+     - Call the TriggerAction function on BeginPlay.
      
-   - Remove the MySpawnActor() function from inside MyOnBeginOverlap() and include it inside MySpawnActor() function
-   
-   - On the Spawner header file create a FTimerHandle variable
-   - On Spawner.cpp, OnBeginPlay, set timer and make it call MySpawnActor()
-     - Use GetWorldTimeManager() function to call SetTimer() passing the TimerHandle variable, "this" as the object, the address for the call back function to spawn the actor -MySpawnActor()-, the time range for timer count and loop boolean.
-   
-   - Declare a IsOverlapping bool for when the actor is overlapping the TriggerBox / TriggerVolume
-   - Set IsOverlapping as true inside MyOnBeginOverlap() and false inside MyOnEndOverlap()
-   - Inside MySpawnActor, wrap the SpawnActor function with an if statement based on the IsOverlapping bool so that it only gets called if the actor is currently overlapping the TriggerBox / TriggerVolume
+   - Set the Timer
+     - #include "TimerManager.h" and Declare a FTimerHandle variable
+     - OnBeginPlay, set timer and make it call MySpawnActor()
+       - Use GetWorldTimeManager() function to call SetTimer() passing the TimerHandle variable, "this" as the object, the address for the call back function to spawn the actor -MySpawnActor()-, the time range for timer count and loop boolean.
+     - delete the actor objects from the SpawnActor() parameters
+     
+   - SpawnActor
+    - Inside MySpawnActor, wrap the SpawnActor function with an if statement based on the IsOverlapping bool so that it only gets called if the actor is currently overlapping the TriggerBox / TriggerVolume
 
 ## Components connection flow
 ![image](https://user-images.githubusercontent.com/12215115/208666394-9ed64d1f-6ef8-4ccf-96f6-37a4d411998d.png)
