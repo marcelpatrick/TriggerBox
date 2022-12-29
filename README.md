@@ -93,7 +93,7 @@
      - delete the actor objects from the SpawnActor() parameters
      
    - SpawnActor
-    - Inside MySpawnActor, wrap the SpawnActor function with an if statement based on the IsOverlapping bool so that it only gets called if the actor is currently overlapping the TriggerBox / TriggerVolume
+     - Inside MySpawnActor, wrap the SpawnActor function with an if statement based on the IsOverlapping bool so that it only gets called if the actor is currently overlapping the TriggerBox / TriggerVolume
 
 ## Components connection flow
 ![image](https://user-images.githubusercontent.com/12215115/208666394-9ed64d1f-6ef8-4ccf-96f6-37a4d411998d.png)
